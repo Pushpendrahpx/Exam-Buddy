@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Exam Buddy",
+    "version": "0.1",
+    "content_scripts": [{
+        "matches": [
+            "https://github.com/poojapaliwal/*",
+            "https://github.com/pushpendrahpx/*"
+        ],
+        "js": ["content.js"]
+    }],
+    "browser_action": {
+        "default_title": "Helping Others",
+        "default_popup": "popup.html"
+    }
+}

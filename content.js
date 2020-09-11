@@ -1,0 +1,1 @@
+alert("Exam Buddy is Working");
