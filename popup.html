@@ -2,6 +2,7 @@
 
 <head>
     <title>Exam Buddy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
 </head>
 
 <body>
@@ -14,9 +15,10 @@
     <div class="container">
         <p id="time"></p>
         <button onclick="fun()">start</button>
-        <button onclick="low()">stop</button>
+        <button onclick="stop()">stop</button>
     </div>
     <script>
+        window.Start=()=>{}
         function fun() {
             function Start() {
                 var d = new Date();
@@ -31,12 +33,12 @@
 
             }
             setInterval(Start, 1000);
-
         }
-        function low() {
+        var clean = setInterval(Start, 1000);
+
+        function stop(){
             clearInterval(clean);
         }
     </script>
 </body>
-
 </html>
