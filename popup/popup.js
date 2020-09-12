@@ -49,3 +49,14 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
+
+document.body.addEventListener("click", () => {
+    chrome.runtime.sendMessage({
+        msg: "something_completed",
+        data: {
+            subject: "Loading",
+            content: "Just completed!"
+        }
+    });
+})
+console.log(chrome)
