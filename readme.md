@@ -16,4 +16,3 @@ Exam Buddy is a Chrome Extentsion which provides some essential Exam tools which
 ## Contributors
 * **Pooja Paliwal** - [poojapaliwal](https://github.com/poojapaliwal)
 * **Pushpendra Vishwakarma** - [pushpendrahpx](https://github.com/Pushpendrahpx)
-

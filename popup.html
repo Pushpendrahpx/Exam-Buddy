@@ -4,7 +4,7 @@
     <title>Exam Buddy</title>
 </head>
 
-<body>
+<body style="min-width: 720px;">
     You See this, inside Popup when you click Exam buddy 😉
     <br /> Code Inside popup.html will help you to edit me !!
 
@@ -12,31 +12,18 @@
         Welcome to the Exam Buddy.
     </h1>
     <div class="container">
-        <p id="time"></p>
-        <button onclick="fun()">start</button>
-        <button onclick="low()">stop</button>
+        <!-- <p id="time"></p>
+        <button id='start'>start</button>
+        <button id='stop'>stop</button> -->
+
+        <div class='container'>
+            <p id='display'></p>
+            <br />
+            <button id='mystart'>Start</button>
+            <button id='mystop'>Stop</button>
+        </div>
     </div>
-    <script>
-        function fun() {
-            function Start() {
-                var d = new Date();
-                // h = new Date().getHours();
-                // n_h = h+3;
-                // var m = new Date().getMinutes();
-                // var s = new Date().getSeconds();
-                // var t= h + m + s;
-                var x = d.toLocaleTimeString();
-                // console.log(h);
-                document.getElementById('time').innerHTML = x;
-
-            }
-            setInterval(Start, 1000);
-
-        }
-        function low() {
-            clearInterval(clean);
-        }
-    </script>
 </body>
+<script src="popup.js"></script>
 
 </html>
