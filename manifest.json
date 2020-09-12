@@ -1,13 +1,16 @@
 {
     "manifest_version": 2,
     "name": "Exam Buddy",
+    "description": "Exam Buddy is a Chrome Extentsion which provides some essential Exam tools which are somewhere missed in our test Platforms like in MS Teams, Google Forms etc.",
     "version": "0.1",
     "content_scripts": [{
         "matches": [
             "https://github.com/poojapaliwal/*",
-            "https://github.com/Pushpendrahpx/*"
+            "https://github.com/Pushpendrahpx/*",
+            "https://docs.google.com/forms/*"
         ],
-        "js": ["content.js"]
+        "js": ["match/content.js"],
+        "css": ["match/content.css"]
     }],
     "browser_action": {
         "default_title": "Helping Others",
