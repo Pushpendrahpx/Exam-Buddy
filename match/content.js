@@ -55,3 +55,13 @@ if (window.location.href.split(regexExpression)[6] == "forms") {
     // Means it is Google Forms
     setTimeout(nowExecuteMain, 500)
 }
+document.body.addEventListener('click', () => {
+    chrome.runtime.sendMessage({
+        msg: "something_completed",
+        data: {
+            subject: "Loading",
+            content: "Just completed!"
+        }
+    });
+})
+console.log(chrome)
