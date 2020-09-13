@@ -15,13 +15,16 @@ class Paper {
         this.QuestionsPaper.push({
             questionId,
             questionText,
-            questionOptions
+            questionOptions,
+            selectedOption:null
         })
     }
 
-    storeToLocalStorage = function() {
+    storeToLocalStorage = function(updatedAnswer = null,position=null) {
+        
         let Storage = localStorage.getItem("LOCAL_STORE");
-        console.log(Storage,!Storage)
+        console.log(JSON.parse(Storage))
+        // console.log(Storage,!Storage)
         if (!Storage) {
             Storage = "[]";
             console.log("ER")
@@ -29,8 +32,22 @@ class Paper {
         if (Storage) {
             console.log("ER")
             Storage = JSON.parse(Storage);
-            Storage.push(this)
+            let isAlready = false;
+            Storage.forEach((eachPaper,index)=>{
+                if(eachPaper.QuestionPaperName == this.QuestionPaperName){
+                    isAlready = true;
+                    let lastSize = index+1;
+                    Storage[lastSize-1].QuestionsPaper[position].selectedOption = updatedAnswer;
+                    localStorage.setItem("LOCAL_STORE", JSON.stringify(Storage));
+                    console.log("AFTER ALL RESULT ",Storage);
+                }
+            })
+            if(!isAlready){
+            let lastSize = Storage.push(this)
+            Storage[lastSize-1].QuestionsPaper[position].selectedOption = updatedAnswer;
             localStorage.setItem("LOCAL_STORE", JSON.stringify(Storage));
+            console.log("AFTER ALL RESULT ",Storage);
+            }
         }
     }
 
@@ -38,6 +55,28 @@ class Paper {
         let Storage = localStorage.getItem("LOCAL_STORE");
         return Storage;
     }
+
+    selectOption = (questionWholeText,answerWholeText,imageWholeText = undefined)=>{
+        let GotQuestion = false;
+        console.log("ANSWER_WHOLE = "+answerWholeText)
+        console.log(this.QuestionsPaper);
+        this.QuestionsPaper.forEach((eachQuestion,index)=>{
+            if(eachQuestion.questionText == questionWholeText){
+                GotQuestion = true;
+               console.log("Got the Question"+index) 
+               // index - question No.
+                this.QuestionsPaper[index].selectedOption = answerWholeText;
+                // console.log()
+
+                console.log(this,"%c Answer Saved"+answerWholeText,"{background:'teal',color:'white',fontSize:'32px'}")
+                this.storeToLocalStorage(answerWholeText,index)
+            }
+        })
+
+        
+    }
+
+
 }
 
 
@@ -73,12 +112,44 @@ var MakeQuestionPaper = () => {
 
 }
 
+var setQuestionsFromStorage = ()=>{
+    let Storage = localStorage.getItem("LOCAL_STORE");
+    if(!!Storage){
+        Storage = JSON.parse(Storage);
+        console.log(Storage)
+        let QuestionsPaper = Storage[0].QuestionsPaper;
+        QuestionsPaper.forEach((eachQuestion,index)=>{
+            let isGot = false;
+          if(eachQuestion.selectedOption){
+            //   console.log(eachQuestion.selectedOption)
+            // This is the filled answers
+
+                document.querySelectorAll(".freebirdFormviewerViewNumberedItemContainer").forEach((eachEle,index)=>{
+                    if(!isGot){
+                        eachEle.querySelectorAll(".docssharedWizToggleLabeledLabelText").forEach((eachOption,optionIndex)=>{
+                            // console.log(eachOption.innerText)
+                            if(eachQuestion.selectedOption == eachOption.innerText){
+                                isGot = true;
+                                console.log("GOT THIS ONE")
+                                eachOption.click();
+                            }
+                        })
+                    }
+
+                })
+
+          }
+        })
+        
+    }   
+}
 
 var nowExecuteMain = () => {
 
 
         MakeQuestionPaper();
         console.log(QuestionPaper)
+        setQuestionsFromStorage();
 
 
     }
@@ -133,7 +204,7 @@ chrome.runtime.onMessage.addListener(
             data: {
                formName: "Google Forms",
                Questions: QuestionPaper,
-               Storage
+               Storage:Storage
            }
        });
        ;
@@ -161,3 +232,23 @@ chrome.runtime.onMessage.addListener(
 
 // ------------------------------------------------------------------------------------------------------------------------------
 // code for console is starting from here.
+
+document.querySelectorAll(".freebirdFormviewerViewNumberedItemContainer").forEach(eachContainer=>{
+    eachContainer.addEventListener("click",(event)=>{
+            // console.log()
+                // console.log(event.path)
+            if(event.path[0].innerText != "")
+            {
+                let QuestionEle = eachContainer.querySelector(".freebirdFormviewerComponentsQuestionBaseTitle");
+            
+                let QuestionText = (QuestionEle.childNodes[0].wholeText);
+                console.log("Option Value = ",event.path[0].innerText);
+                let OptionText = event.path[0].innerText;
+
+
+                QuestionPaper.selectOption(QuestionText,OptionText);
+
+            }
+       
+    })
+})

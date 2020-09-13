@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// functions are here
+// // functions are here
 // var secondsRemaining;
 // var intervalHandle;
 // function resetPage() {
