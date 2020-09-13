@@ -9,11 +9,12 @@
 }
 
 .main-top {
-    width: 720px;
+    width: auto;
     display: flex;
 }
 
 body {
+    padding:5px;
     min-width: 480px;
 }
 
