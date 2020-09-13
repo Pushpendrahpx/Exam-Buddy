@@ -253,43 +253,21 @@ document.querySelectorAll(".freebirdFormviewerViewNumberedItemContainer").forEac
     })
 })
 
-var startButton = document.createElement("button");
-var inputMinutes = document.createElement("input");
-startButton.appendChild(document.createTextNode("startCountdown"));
-document.body.appendChild(startButton);
-document.body.appendChild(inputMinutes);
-startButton.style.position = "absolute"
-startButton.style.borderRadius = "15px"
-startButton.style.color = "white"
-startButton.style.fontSize = "25px"
-startButton.style.backgroundColor = "green"
-startButton.style.padding = "15px"
-inputMinutes.style.position = "absolute"
-inputMinutes.style.top = "23px"
-inputMinutes.style.padding = "15px"
-inputMinutes.style.fontSize = "25px"
-inputMinutes.style.borderRadius = "15px"
-inputMinutes.style.width = "150px"
-inputMinutes.style.right = "230px"
-startButton.style.top = "23px"
-startButton.style.right = "15px"
-startButton.setAttribute("value", "Start Countdown");
-inputMinutes.setAttribute("type", "text");
-inputMinutes.setAttribute("id","minutes"); 
-var a= document.createElement("div")
-a.innerHTML = "<div id='container'><div id='inputArea'></div><h1 id='time'>0:00</h1></div>"
-document.body.appendChild(a)
-a.style.position = "absolute"
-a.style.top = "90px"
-a.style.right = "144px"
-a.style.fontSize = "34px"
+let autoSubmit = ()=>{
 
+    alert("Going to Submit Now")
+    let submitButton = document.querySelector(".appsMaterialWizButtonPaperbuttonLabel");
+    submitButton.click();
+}
 
+// functions are here
 var secondsRemaining;
 var intervalHandle;
 function resetPage() {
     document.getElementById("inputArea").style.display = "block";
 }
+
+let isEnd = false;
 function tick() {
     // grab the h1
     var timeDisplay = document.getElementById("time");
@@ -314,6 +292,12 @@ function tick() {
         alert("Done!");
         clearInterval(intervalHandle);
         resetPage();
+    }
+
+
+    if((secondsRemaining <= 20) && (isEnd == false)){
+        isEnd = true;
+        autoSubmit()
     }
 
     //subtract from seconds remaining
@@ -347,8 +331,42 @@ function startCountdown() {
 
 
 }
-let button = document.querySelector("button");
-button.addEventListener("click", () => {
+
+
+// js for buttons and input
+var startButton = document.createElement("button");
+startButton.id = "StartButton"
+startButton.addEventListener("click", () => {
     console.log("Button clicked.");
      startCountdown();
 });
+var inputMinutes = document.createElement("input");
+startButton.appendChild(document.createTextNode("startCountdown"));
+document.body.appendChild(startButton);
+document.body.appendChild(inputMinutes);
+startButton.style.position = "absolute"
+startButton.style.borderRadius = "15px"
+startButton.style.color = "white"
+startButton.style.fontSize = "25px"
+startButton.style.backgroundColor = "green"
+startButton.style.padding = "15px"
+inputMinutes.style.position = "absolute"
+inputMinutes.style.top = "23px"
+inputMinutes.style.padding = "15px"
+inputMinutes.style.fontSize = "25px"
+inputMinutes.style.borderRadius = "15px"
+inputMinutes.style.width = "150px"
+inputMinutes.style.right = "230px"
+startButton.style.top = "23px"
+startButton.style.right = "15px"
+startButton.setAttribute("value", "Start Countdown");
+inputMinutes.setAttribute("type", "text");
+inputMinutes.setAttribute("id","minutes"); 
+var a= document.createElement("div")
+a.innerHTML = "<div id='container'><div id='inputArea'></div><h1 id='time'>0:00</h1></div>"
+document.body.appendChild(a)
+a.style.position = "absolute"
+a.style.top = "90px"
+a.style.right = "144px"
+a.style.fontSize = "34px"
+
