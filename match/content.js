@@ -65,3 +65,29 @@ document.body.addEventListener('click', () => {
     });
 })
 console.log(chrome)
+
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.msg === "Popu") {
+            //  To do something
+            console.log(request.data.subject)
+            console.log(request.data.content)
+        }
+    }
+);
+
+
+// ------------------------------------------------------------------------------------------------------------------------------
+// code for console is starting from here.
+var k = document.createElement("div")
+k.id = "container"
+
+// to make div inside div 
+var l = k.appendChild(document.createElement("div"));
+l.id = "inputArea"
+
+// for putting heading inside div with id= time
+var h1 = k.appendChild(document.createElement("h1"));
+h1.id = "time"
+h1.appendChild(document.createTextNode("0:00"))
