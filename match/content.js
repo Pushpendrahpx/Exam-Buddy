@@ -29,8 +29,8 @@ class Paper {
         if (Storage) {
             console.log("ER")
             Storage = JSON.parse(Storage);
-            // Storage.push(this)
-            // localStorage.setItem("LOCAL_STORE", JSON.stringify(Storage));
+            Storage.push(this)
+            localStorage.setItem("LOCAL_STORE", JSON.stringify(Storage));
         }
     }
 
