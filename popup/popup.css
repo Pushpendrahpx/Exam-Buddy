@@ -1,28 +1,52 @@
 .main-title {
     font-size: 32px;
     font-weight: 100;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold ;
+    position: relative;
+    color: black;
+    padding: 13px;
+    border-radius: 12px;
 }
 
 .main-logo {
-    width: 128px;
+    height: 90px;
+    width: 111px;
+    margin-left: 15px;
+    margin-top: 15px;
+    border-radius: 61px;
+    margin-bottom: 10px;
 }
 
 .main-top {
     width: 720px;
     display: flex;
+    background-color:gray;
+    color: yellow;
 }
+/* .is-rounded{
+    margin-top: 15px;
+    margin-left: 15px;
+} */
 
 body {
     min-width: 480px;
 }
 
 #tabs_listening li:hover {
-    background: #dedede;
+    background: #6d7c70;
 }
 
 #tabs_listening li {
-    transition-duration: 0.2s;
+    /* transition-duration: 0.2s; */
+    background-color: rgb(203, 146, 245);
+    font-weight: bold;
+    color: white;
+}
+#button1,#button2{
+    color: black;
+    font-weight: bold ;
 }
 
 #tabs_main_content {
@@ -46,7 +70,7 @@ label {
     text-indent: -9999px;
     width: 64px;
     height: 32px;
-    background: grey;
+    background: rgb(66, 58, 58);
     display: block;
     border-radius: 100px;
     position: relative;
