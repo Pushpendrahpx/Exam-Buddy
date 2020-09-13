@@ -14,8 +14,9 @@
         </div>
     </section>
     <div class="container">
-
-        <div class="tabs is-centered" id='tabs_listening'>
+        <button id='button1' class="button is-primary" >Refresh Data</button>
+        <button id='button2' class="button is-info">Store This Paper</button>
+        <div class="tabs is-centered" id='tabs_listening' style="margin-bottom: 0;">
             <ul>
                 <li value="home">
                     <a>
@@ -38,10 +39,26 @@
             <div id="Current_Test_Name" style="display: none;">Current test : <span id='Form_Name'></span></div>
             <div id='home_display'>
 
-                <div style="margin: 0 auto;">
-                    <button class="button is-primary"> Show Saved Test </button>
-                    <button class="button is-info"> Display Timer On/Off </button>
-                </div>
+                <table class="table" style="width: 100%;margin:0;padding: 0;">
+                    <thead>
+                      <tr>
+                        <th><span title="S.No.">S.No.</span></th>
+                        <th>Test Name</th>
+                        
+                        <th><span title="Points">Organization</span></th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id='Old_Results'>
+                      <!-- <tr>
+                        <th>1</th>
+                        <td><a>Leicester City</a>
+                        </td>
+                        <td>81</td>
+                        <td><button>&times;</button></td>
+                      </tr> -->
+                    </tbody>
+                  </table>
             </div>
             <div id='controls_display'>
                 Controls

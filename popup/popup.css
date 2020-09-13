@@ -9,6 +9,7 @@
 }
 
 .main-top {
+    width: 720px;
     display: flex;
 }
 
@@ -81,3 +82,7 @@ label:active:after {
     align-items: center;
     height: 100vh;
 } */
+
+.action{
+    font-size: 32px;
+}

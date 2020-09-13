@@ -8,6 +8,7 @@ class Paper {
         this.QuestionPaperDescription = QuestionPaperDescription;
         this.Organisation = Organisation;
         this.URL = URL;
+        this.time = new Date().getTime();   
     }
     QuestionsPaper = new Array();
     addQuestion = function(questionId, questionText, questionOptions) {
@@ -20,14 +21,22 @@ class Paper {
 
     storeToLocalStorage = function() {
         let Storage = localStorage.getItem("LOCAL_STORE");
-        if (!!Storage) {
-            Storage = new Array();
-        }
+        console.log(Storage,!Storage)
         if (!Storage) {
-            Storage = JSON.parse(Storage);
-            Storage.push(this)
-            localStorage.setItem("LOCAL_STORE", Storage);
+            Storage = "[]";
+            console.log("ER")
         }
+        if (Storage) {
+            console.log("ER")
+            Storage = JSON.parse(Storage);
+            // Storage.push(this)
+            // localStorage.setItem("LOCAL_STORE", JSON.stringify(Storage));
+        }
+    }
+
+    getFromLocalStorage = ()=>{
+        let Storage = localStorage.getItem("LOCAL_STORE");
+        return Storage;
     }
 }
 
@@ -51,11 +60,14 @@ var MakeQuestionPaper = () => {
         // let Temporary_Options = new Array()
         QuestionPaper.addQuestion(question[0], question[1], question[4]);
     })
+    console.log("ENGLISH")
+    let Storage = localStorage.getItem("LOCAL_STORE");
     chrome.runtime.sendMessage({
         msg: "FORMS_DETECTED",
         data: {
             formName: "Google Forms",
-            Questions: QuestionPaper
+            Questions: QuestionPaper,
+            Storage
         }
     });
 
@@ -86,7 +98,6 @@ document.body.addEventListener('click', () => {
         }
     });
 })
-console.log(chrome)
 
 
 chrome.runtime.onMessage.addListener(
@@ -99,6 +110,54 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+
+//// CONTENT REQUESTS
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if( request.message === "STORE_REQUEST" ) {
+          QuestionPaper.storeToLocalStorage();
+       start();
+           }
+    }
+  );
+
+  chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if( request.message === "GET_TESTS" ) {
+          console.log("RECIEVED GET REQUEST")
+        //   QuestionPaper.storeToLocalStorage();
+      
+            let Storage = localStorage.getItem("LOCAL_STORE");
+            chrome.runtime.sendMessage({
+            msg: "FORMS_DETECTED",
+            data: {
+               formName: "Google Forms",
+               Questions: QuestionPaper,
+               Storage
+           }
+       });
+       ;
+           }
+    }
+  );
+  chrome.runtime.onMessage.addListener(
+      function(request, sender, sendResponse) {
+        if( request.message === "STORE_THIS_STATE" ) {
+            QuestionPaper.storeToLocalStorage();
+            chrome.runtime.sendMessage({
+                msg: "something_completed",
+                data: {
+                    subject: "Loading",
+                    content: "Just completed!"
+                }
+            });
+             }
+      }
+    );
+
+  function start(){
+      alert("started");
+  }
 
 // ------------------------------------------------------------------------------------------------------------------------------
 // code for console is starting from here.
