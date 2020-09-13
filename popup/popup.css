@@ -1,0 +1,43 @@
+.main-title {
+    font-size: 32px;
+    font-weight: 100;
+    margin-top: 20px;
+}
+
+.main-logo {
+    width: 128px;
+}
+
+.main-top {
+    display: flex;
+}
+
+body {
+    min-width: 480px;
+}
+
+#tabs_listening li:hover {
+    background: #dedede;
+}
+
+#tabs_listening li {
+    transition-duration: 0.2s;
+}
+
+#tabs_main_content {
+    opacity: 1;
+    visibility: visible;
+    transition-duration: visibility 0s, opacity 0.5s linear;
+}
+
+.old_search {
+    width: 50%;
+}
+
+#home_display {
+    display: flex;
+}
+
+#home_display>nav {
+    display: block;
+}

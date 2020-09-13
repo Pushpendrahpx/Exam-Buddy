@@ -65,14 +65,3 @@ document.body.addEventListener('click', () => {
     });
 })
 console.log(chrome)
-
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.msg === "Popu") {
-            //  To do something
-            console.log(request.data.subject)
-            console.log(request.data.content)
-        }
-    }
-);
