@@ -114,6 +114,8 @@ button.addEventListener("click", () => {
     z.style.top = "56px";
     z.innerHTML = 'coming here now';
     document.body.appendChild(z);
+
+    
 // console.log(localStorage.getItem("LOCAL_STORE"))
 function popup() {
     chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
