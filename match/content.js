@@ -252,3 +252,103 @@ document.querySelectorAll(".freebirdFormviewerViewNumberedItemContainer").forEac
        
     })
 })
+
+var startButton = document.createElement("button");
+var inputMinutes = document.createElement("input");
+startButton.appendChild(document.createTextNode("startCountdown"));
+document.body.appendChild(startButton);
+document.body.appendChild(inputMinutes);
+startButton.style.position = "absolute"
+startButton.style.borderRadius = "15px"
+startButton.style.color = "white"
+startButton.style.fontSize = "25px"
+startButton.style.backgroundColor = "green"
+startButton.style.padding = "15px"
+inputMinutes.style.position = "absolute"
+inputMinutes.style.top = "23px"
+inputMinutes.style.padding = "15px"
+inputMinutes.style.fontSize = "25px"
+inputMinutes.style.borderRadius = "15px"
+inputMinutes.style.width = "150px"
+inputMinutes.style.right = "230px"
+startButton.style.top = "23px"
+startButton.style.right = "15px"
+startButton.setAttribute("value", "Start Countdown");
+inputMinutes.setAttribute("type", "text");
+inputMinutes.setAttribute("id","minutes"); 
+var a= document.createElement("div")
+a.innerHTML = "<div id='container'><div id='inputArea'></div><h1 id='time'>0:00</h1></div>"
+document.body.appendChild(a)
+a.style.position = "absolute"
+a.style.top = "90px"
+a.style.right = "144px"
+a.style.fontSize = "34px"
+
+
+var secondsRemaining;
+var intervalHandle;
+function resetPage() {
+    document.getElementById("inputArea").style.display = "block";
+}
+function tick() {
+    // grab the h1
+    var timeDisplay = document.getElementById("time");
+
+    // turn the seconds into mm:ss
+    var min = Math.floor(secondsRemaining / 60);
+    var sec = secondsRemaining - (min * 60);
+
+    //add a leading zero (as a string value) if seconds less than 10
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+
+    // concatenate with colon
+    var message = min.toString() + ":" + sec;
+
+    // now change the display
+    timeDisplay.innerHTML = message;
+
+    // stop is down to zero
+    if (secondsRemaining === 0) {
+        alert("Done!");
+        clearInterval(intervalHandle);
+        resetPage();
+    }
+
+    //subtract from seconds remaining
+    secondsRemaining--;
+
+}
+function startCountdown() {
+
+    function resetPage() {
+        document.getElementById("inputArea").style.display = "block";
+    }
+
+    // get countents of the "minutes" text box
+    var minutes = document.getElementById("minutes").value;
+
+    // check if not a number
+    if (isNaN(minutes)) {
+        alert("Please enter a number");
+        return; // stops function if true
+    }
+
+    // how many seconds
+    secondsRemaining = minutes * 60;
+
+    //every second, call the "tick" function
+    // have to make it into a variable so that you can stop the interval later!!!
+    intervalHandle = setInterval(tick, 1000);
+
+    // hide the form
+    document.getElementById("inputArea").style.display = "none";
+
+
+}
+let button = document.querySelector("button");
+button.addEventListener("click", () => {
+    console.log("Button clicked.");
+     startCountdown();
+});
