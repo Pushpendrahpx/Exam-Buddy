@@ -1,10 +1,9 @@
 var secondsRemaining;
 var intervalHandle;
 
+
 function resetPage() {
-
     document.getElementById("inputArea").style.display = "block";
-
 }
 
 function tick() {
@@ -37,7 +36,6 @@ function tick() {
     secondsRemaining--;
 
 }
-
 function startCountdown() {
 
     function resetPage() {
@@ -82,6 +80,7 @@ window.onload = function () {
     };
     //add to the DOM, to the div called "inputArea"
     document.getElementById("inputArea").appendChild(inputMinutes);
-    document.getElementById("inputArea").appendChild(startButton)
+    document.getElementById("inputArea").appendChild(startButton);
 
 }
+
