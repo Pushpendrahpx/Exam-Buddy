@@ -41,7 +41,7 @@ mystop.addEventListener("click", () => {
 })
 
 chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
+    function (request, sender, sendResponse) {
         if (request.msg === "something_completed") {
             //  To do something
             console.log(request.data.subject)
@@ -60,3 +60,41 @@ document.body.addEventListener("click", () => {
     });
 })
 console.log(chrome)
+
+
+// --------------------------------------------------------------------------------------------------------------
+
+// js for buttons and input
+var startButton = document.createElement("button");
+var inputMinutes = document.createElement("input");
+startButton.appendChild(document.createTextNode("Click Me!"));
+document.body.appendChild(startButton);
+document.body.appendChild(inputMinutes);
+startButton.style.position = "absolute"
+inputMinutes.style.position = "absolute"
+inputMinutes.style.top = "0px"
+inputMinutes.style.left = "76px"
+startButton.style.top = "0px"
+startButton.setAttribute("value", "Start Countdown");
+inputMinutes.setAttribute("type", "text");
+inputMinutes.setAttribute("id","minutes");
+
+// html part 
+var a= document.createElement("div")
+a.innerHTML = "<div id='container'><div id='inputArea'></div><h1 id='time'>0:00</h1></div>"
+document.body.appendChild(a)
+a.style.position = "absolute"
+a.style.top = "46px"
+a.style.left = "46px"
+
+
+// code for just testing purpose
+let button = document.querySelector("button");
+button.addEventListener("click", () => {
+    console.log("Button clicked.");
+    var z = document.createElement('p'); // is a node
+    z.style.position = "absolute";
+    z.style.top = "56px";
+    z.innerHTML = 'coming here now';
+    document.body.appendChild(z);
+});
