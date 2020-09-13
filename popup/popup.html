@@ -22,11 +22,11 @@
                         <span>Home</span>
                     </a>
                 </li>
-                <li value="controls">
+                <!-- <li value="controls">
                     <a>
                         <span>Controls</span>
                     </a>
-                </li>
+                </li> -->
                 <li value="settings">
                     <a>
                         <span>Settings</span>
@@ -35,98 +35,19 @@
             </ul>
         </div>
         <div id='tabs_main_content'>
+            <div id="Current_Test_Name" style="display: none;">Current test : <span id='Form_Name'></span></div>
             <div id='home_display'>
-                <nav class="panel old_search">
-                    <p class="panel-heading">
-                        Previous Tests
-                    </p>
-                    <div class="panel-block">
-                        <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Search">
-                            <span class="icon is-left">
-                          <i class="fas fa-search" aria-hidden="true"></i>
-                        </span>
-                        </p>
-                    </div>
-                    <a class="panel-block is-active">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> bulma
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> marksheet
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> minireset.css
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> jgthms.github.io
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                      </span> daniellowtw/infboard
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                      </span>
-                    </a>
-                </nav>
-                <nav class="panel old_search">
-                    <p class="panel-heading">
-                        Previous Tests
-                    </p>
-                    <div class="panel-block">
-                        <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Search">
-                            <span class="icon is-left">
-                          <i class="fas fa-search" aria-hidden="true"></i>
-                        </span>
-                        </p>
-                    </div>
-                    <a class="panel-block is-active">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> bulma
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> marksheet
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> minireset.css
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-book" aria-hidden="true"></i>
-                      </span> jgthms.github.io
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                      </span> daniellowtw/infboard
-                    </a>
-                    <a class="panel-block">
-                        <span class="panel-icon">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                      </span>
-                    </a>
-                </nav>
+
+                <div style="margin: 0 auto;">
+                    <button class="button is-primary"> Show Saved Test </button>
+                    <button class="button is-info"> Display Timer On/Off </button>
+                </div>
             </div>
             <div id='controls_display'>
                 Controls
             </div>
             <div id='settings_display'>
+                <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
 
             </div>
         </div>

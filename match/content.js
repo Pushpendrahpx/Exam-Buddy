@@ -17,6 +17,18 @@ class Paper {
             questionOptions
         })
     }
+
+    storeToLocalStorage = function() {
+        let Storage = localStorage.getItem("LOCAL_STORE");
+        if (!!Storage) {
+            Storage = new Array();
+        }
+        if (!Storage) {
+            Storage = JSON.parse(Storage);
+            Storage.push(this)
+            localStorage.setItem("LOCAL_STORE", Storage);
+        }
+    }
 }
 
 
@@ -39,6 +51,14 @@ var MakeQuestionPaper = () => {
         // let Temporary_Options = new Array()
         QuestionPaper.addQuestion(question[0], question[1], question[4]);
     })
+    chrome.runtime.sendMessage({
+        msg: "FORMS_DETECTED",
+        data: {
+            formName: "Google Forms",
+            Questions: QuestionPaper
+        }
+    });
+
 }
 
 
@@ -53,6 +73,8 @@ var nowExecuteMain = () => {
     /************************************************************************************************* */
 if (window.location.href.split(regexExpression)[6] == "forms") {
     // Means it is Google Forms
+
+
     setTimeout(nowExecuteMain, 500)
 }
 document.body.addEventListener('click', () => {

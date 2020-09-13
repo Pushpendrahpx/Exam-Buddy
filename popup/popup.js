@@ -1,4 +1,3 @@
-// var timer = 
 var start_time, end_time, difference = 0;
 
 var mystart = document.getElementById("mystart");
@@ -39,7 +38,8 @@ mystart.addEventListener("click", () => {
 mystop.addEventListener("click", () => {
     myStop();
 })
-
+window.rt = chrome;
+console.log(chrome);
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.msg === "something_completed") {
@@ -50,4 +50,14 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+chrome.runtime.onMessage.addListener((req, sender, sendResponse) => {
+    if (req.msg === "FORMS_DETECTED") {
+        let Current_Test_Name = document.getElementById('Current_Test_Name');
+        Current_Test_Name.style.display = "block";
+        let Title = document.getElementById("Form_Name");
+        Title.innerText = req.data.Questions.QuestionPaperName;
+        console.log("Google Forms Detected")
+        console.log(req)
+    }
+})
 console.log(chrome)
