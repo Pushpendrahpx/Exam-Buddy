@@ -75,15 +75,15 @@ console.log(chrome)
 
 
 
-// code for just testing purpose
+// // code for just testing purpose
 // let button = document.querySelector("button");
 // button.addEventListener("click", () => {
 //     console.log("Button clicked.");
 //     var z = document.createElement('p'); // is a node
 //     z.style.position = "absolute";
 //     z.style.top = "56px";
-    // z.innerHTML = 'coming here now';
-    // document.body.appendChild(z);
+//     z.innerHTML = 'coming here now';
+//     document.body.appendChild(z);
 // console.log(localStorage.getItem("LOCAL_STORE"))
 function popup() {
     chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
